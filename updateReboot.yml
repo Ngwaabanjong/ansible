@@ -1,0 +1,15 @@
+- name: Update and reboot
+  # note: your 'hosts' section will likely be different as this is a group I created Amazon linux hosts in Ansible Tower itself.
+  hosts: servers
+  gather_facts: no
+  tasks:
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+      
+    - name: Reboot servers
+      reboot:
+        pre_reboot_delay: 90
+        msg: "!!!Attention, server will be rebooted in 90 seconds!!!"
+...
