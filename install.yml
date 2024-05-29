@@ -1,0 +1,7 @@
+- name: Install httpd using dnf
+  hosts: servers
+  tasks:
+    - name: Installing httpd using dnf
+      dnf:
+        name: httpd
+        state: present
