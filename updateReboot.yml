@@ -2,6 +2,8 @@
   # note: your 'hosts' section will likely be different as this is a group I created Amazon linux hosts in Ansible Tower itself.
   hosts: servers
   gather_facts: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Upgrade all packages
       yum:
