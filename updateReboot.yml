@@ -6,11 +6,13 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Upgrade all packages
+      become: yes
       dnf:
         name: '*'
         state: latest
       
     - name: Reboot servers
+      become: yes
       reboot:
         pre_reboot_delay: 90
         msg: "!!!Attention, server will be rebooted in 90 seconds!!!"
