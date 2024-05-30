@@ -1,0 +1,23 @@
+---
+- name: Create S3 Bucket
+  hosts: localhost
+  become: yes
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    aws_region: us-east-1
+    bucket_name: my-unique-bucket-name-12345  # Ensure this is globally unique
+  tasks:
+    - name: Create S3 bucket
+      amazon.aws.s3_bucket:
+        name: "{{ bucket_name }}"
+        region: "{{ aws_region }}"
+        state: present
+        acl: private
+      register: s3
+
+    - name: Display S3 bucket creation result
+      debug:
+        msg:
+          - "Bucket Name: {{ s3.bucket.name }}"
+          - "Bucket Region: {{ aws_region }}"
