@@ -1,15 +1,14 @@
 ---
 - name: Deploy EC2 Instance
   hosts: localhost
-  become: 'yes'
-  gather_facts: true
+  become: yes
+  gather_facts: no
   vars:
-    ansible_python_interpreter:/usr/bin/python3
-  vars:
+    ansible_python_interpreter: /usr/bin/python3
     aws_region: us-east-1
     instance_type: t2.micro
     key_name: bjuatkey
-    ami_id: i-03bf3ccbe6afc70f3  # Example AMI ID for Amazon Linux 2
+    ami_id: ami-0c55b159cbfafe1f0  # Example AMI ID for Amazon Linux 2
     security_group: sg-0b52fa29523a310b5
     subnet_id: subnet-0ad59c546d76a1864
     instance_name: MyEC2Instance
